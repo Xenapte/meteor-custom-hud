@@ -7,6 +7,10 @@ Some HUD customizations that I find to be useful personally.
 - Custom Coords
 - Custom Time
 
+## TODO
+
+- Integrate custom text formats into Starscript directly
+
 ## Building  
 
 - Clone this project

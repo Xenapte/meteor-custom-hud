@@ -56,7 +56,7 @@ public class CustomCoords extends CustomTextHUD {
             return String.format(coordsFormat.get(), x, y, z);
         }
         catch (IllegalFormatException e) {
-            return e.getLocalizedMessage();
+            return e.toString();
         }
     }
 }

@@ -27,7 +27,12 @@ public class CustomTimeFormat extends CustomTextHUD {
 
     @Override
     public String getText() {
-        var format = new SimpleDateFormat(timeFormat.get());
-        return format.format(new Date());
+        try {
+            var formatter = new SimpleDateFormat(timeFormat.get());
+            return formatter.format(new Date());
+        }
+        catch (IllegalArgumentException e) {
+            return e.toString();
+        }
     }
 }
