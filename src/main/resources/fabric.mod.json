@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "meteor-custom-hud",
+  "version": "${version}",
+  "name": "Meteor Custom HUD",
+  "description": "Meteor Custom HUD.",
+  "authors": [
+    "Xenapte"
+  ],
+  "contact": {
+    "repo": "https://github.com/MeteorDevelopment/meteor-addon-template"
+  },
+  "icon": "assets/template/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "meteor": [
+      "xenapte.customhud.Addon"
+    ]
+  },
+  "mixins": [
+  ],
+  "custom": {
+    "meteor-client:color": "225,25,25"
+  },
+  "depends": {
+    "java": ">=17",
+    "minecraft": ">=${mc_version}",
+    "meteor-client": "*"
+  }
+}
