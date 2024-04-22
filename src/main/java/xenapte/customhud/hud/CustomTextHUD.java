@@ -11,7 +11,6 @@ import meteordevelopment.meteorclient.systems.hud.HudElementInfo;
 import meteordevelopment.meteorclient.systems.hud.HudRenderer;
 import meteordevelopment.meteorclient.utils.render.color.SettingColor;
 // import meteordevelopment.starscript;
-import xenapte.customhud.Addon;
 
 public class CustomTextHUD extends HudElement {
     protected final SettingGroup sgGeneral = settings.getDefaultGroup();
