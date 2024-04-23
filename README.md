@@ -4,8 +4,9 @@ Some HUD customizations that I find to be useful personally.
 
 ## Custom HUD List
 
-- Custom Coords
-- Custom Time
+- Custom Coords Formatter
+- Custom Time Formatter
+- Weather Display
 
 ## Custom Starscipt Functions
 
@@ -13,6 +14,7 @@ Some HUD customizations that I find to be useful personally.
 - `formatCoords(fmt)`: format coords (as a shorthand to `format(fmt, player.x, player.y, player.z)`).
 - `formatOppositeCoords(fmt)`
 - `formatTime(fmt)`: format the current world time (see `java.text.SimpleDateFormat`).
+- `weather`
 
 ## Building  
 
