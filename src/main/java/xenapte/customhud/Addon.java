@@ -11,10 +11,8 @@ import meteordevelopment.meteorclient.addons.MeteorAddon;
 import meteordevelopment.meteorclient.systems.hud.Hud;
 import meteordevelopment.meteorclient.systems.hud.HudGroup;
 import meteordevelopment.starscript.value.Value;
-import xenapte.customhud.functions.CoordinateFormatter;
-import xenapte.customhud.functions.TimeFormatter;
-import xenapte.customhud.hud.CustomCoords;
-import xenapte.customhud.hud.CustomTimeFormat;
+import xenapte.customhud.hud.CoordinateFormatter;
+import xenapte.customhud.hud.TimeFormatter;
 
 import org.slf4j.Logger;
 
@@ -27,8 +25,8 @@ public class Addon extends MeteorAddon {
         LOG.info("Initializing Meteor Custom Text HUD");
 
         // HUD
-        Hud.get().register(CustomCoords.INFO);
-        Hud.get().register(CustomTimeFormat.INFO);
+        Hud.get().register(CoordinateFormatter.INFO);
+        Hud.get().register(TimeFormatter.INFO);
 
         ss.set("formatTime", (ss, argCount) -> {
             if (argCount != 1)
@@ -55,7 +53,7 @@ public class Addon extends MeteorAddon {
                 ss.error("format(fmt, ...args) requires at least 1 arguments, got %d.", argCount);
             var args = new ArrayList<Object>();
             for (int i = 1; i < argCount; i ++) {
-                Value v = ss.pop();
+                Value v = ss.pop(); // can't just add v to args
                 Object o = null;
                 switch (v.type) {
                     case Boolean: o = v.getBool(); break;

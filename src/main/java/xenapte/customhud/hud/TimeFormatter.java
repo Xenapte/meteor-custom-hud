@@ -1,15 +1,17 @@
 package xenapte.customhud.hud;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import meteordevelopment.meteorclient.settings.Setting;
 import meteordevelopment.meteorclient.settings.SettingGroup;
 import meteordevelopment.meteorclient.settings.StringSetting;
 import meteordevelopment.meteorclient.systems.hud.HudElementInfo;
 // import meteordevelopment.starscript;
 import xenapte.customhud.Addon;
-import xenapte.customhud.functions.TimeFormatter;
 
-public class CustomTimeFormat extends CustomTextHUD {
-    public static final HudElementInfo<CustomTimeFormat> INFO = new HudElementInfo<>(Addon.HUD_GROUP, "custom-time-format", "Custom time format.", CustomTimeFormat::new);
+public class TimeFormatter extends CustomTextHUD {
+    public static final HudElementInfo<TimeFormatter> INFO = new HudElementInfo<>(Addon.HUD_GROUP, "custom-time-format", "Custom time format.", TimeFormatter::new);
     protected final SettingGroup sgGeneral = settings.getDefaultGroup();
 
     private final Setting<String> timeFormat = sgGeneral.add(new StringSetting.Builder()
@@ -19,12 +21,22 @@ public class CustomTimeFormat extends CustomTextHUD {
         .build()
     );
 
-    public CustomTimeFormat() {
+    public TimeFormatter() {
         super(INFO);
+    }
+
+    public static String format(String fmt) {
+        try {
+            var formatter = new SimpleDateFormat(fmt);
+            return formatter.format(new Date());
+        }
+        catch (IllegalArgumentException e) {
+            return e.toString();
+        }
     }
 
     @Override
     public String getText() {
-        return TimeFormatter.format(timeFormat.get());
+        return format(timeFormat.get());
     }
 }
