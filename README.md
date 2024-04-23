@@ -7,6 +7,7 @@ Some HUD customizations that I find to be useful personally.
 - Custom Coords Formatter
 - Custom Time Formatter
 - Weather Display
+- Last Death Location
 
 ## Custom Starscipt Functions
 
@@ -15,6 +16,10 @@ Some HUD customizations that I find to be useful personally.
 - `formatOppositeCoords(fmt)`
 - `formatTime(fmt)`: format the current world time (see `java.text.SimpleDateFormat`).
 - `weather`
+- `player.last_death_pos`
+  - `player.last_death_pos.dimension`
+  - `player.last_death_pos.x` / `y` / `z`
+  - `player.last_death_pos.format(fmt)`
 
 ## Building  
 

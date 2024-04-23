@@ -6,6 +6,7 @@ import meteordevelopment.meteorclient.addons.MeteorAddon;
 import meteordevelopment.meteorclient.systems.hud.Hud;
 import meteordevelopment.meteorclient.systems.hud.HudGroup;
 import xenapte.customhud.hud.CoordinateFormatter;
+import xenapte.customhud.hud.LastDeathLocation;
 import xenapte.customhud.hud.TimeFormatter;
 import xenapte.customhud.hud.WeatherDisplay;
 
@@ -23,6 +24,7 @@ public class Addon extends MeteorAddon {
         Hud.get().register(CoordinateFormatter.INFO);
         Hud.get().register(TimeFormatter.INFO);
         Hud.get().register(WeatherDisplay.INFO);
+        Hud.get().register(LastDeathLocation.INFO);
 
         CustomStarscript.onInitialize();
     }

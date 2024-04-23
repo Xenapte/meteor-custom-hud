@@ -6,9 +6,12 @@ import java.util.IllegalFormatException;
 import static meteordevelopment.meteorclient.utils.misc.MeteorStarscript.ss;
 
 import meteordevelopment.starscript.value.Value;
+import meteordevelopment.starscript.value.ValueMap;
 import xenapte.customhud.hud.CoordinateFormatter;
+import xenapte.customhud.hud.LastDeathLocation;
 import xenapte.customhud.hud.TimeFormatter;
 import xenapte.customhud.hud.WeatherDisplay;
+import xenapte.customhud.hud.LastDeathLocation.Axis;
 
 public class CustomStarscript {
     public static void onInitialize() {
@@ -34,7 +37,7 @@ public class CustomStarscript {
 
         ss.set("format", (ss, argCount) -> {
             if (argCount < 1)
-                ss.error("format(fmt, ...args) requires at least 1 arguments, got %d.", argCount);
+                ss.error("format(fmt, ...args) requires at least 1 argument, got %d.", argCount);
             var args = new ArrayList<Object>();
             for (int i = 1; i < argCount; i ++) {
                 Value v = ss.pop(); // can't just add v to args
@@ -59,5 +62,19 @@ public class CustomStarscript {
         });
 
         ss.set("weather", () -> { return Value.string(WeatherDisplay.getWeather()); });
+
+        ss.getGlobals().get("player").get().getMap().set("last_death_pos", new ValueMap()
+            .set("dimension", () -> Value.string(LastDeathLocation.getDimension()))
+            .set("x", () -> Value.number(LastDeathLocation.getPos(Axis.X)))
+            .set("y", () -> Value.number(LastDeathLocation.getPos(Axis.Y)))
+            .set("z", () -> Value.number(LastDeathLocation.getPos(Axis.Z)))
+            .set("format", (ss, argCount) -> {
+                if (argCount < 1)
+                    ss.error("format(fmt) requires at least 1 argument, got %d.", argCount);
+                String fmt = ss.popString("Argument `fmt` to formatLastDeathPos() needs to be a string.");
+                return Value.string(LastDeathLocation.format(fmt));
+            })
+            .set("_toString", () -> Value.string(LastDeathLocation.format("[%s] %d, %d, %d")))
+        );
     }
 }
