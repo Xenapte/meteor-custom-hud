@@ -34,7 +34,7 @@ public class LastDeathLocation extends CustomTextHUD {
         var deathLocation = mc.player.getLastDeathPos();
         if (!deathLocation.isPresent())
             return 0;
-        var pos = deathLocation.get().getPos();
+        var pos = deathLocation.get().pos();
         switch (axis) {
             case X: return pos.getX();
             case Y: return pos.getY();
@@ -49,7 +49,7 @@ public class LastDeathLocation extends CustomTextHUD {
         var deathLocation = mc.player.getLastDeathPos();
         if (!deathLocation.isPresent())
             return "None";
-        return deathLocation.get().getDimension().getValue().toString().replaceFirst("^minecraft:", "");
+        return deathLocation.get().dimension().getValue().toString().replaceFirst("^minecraft:", "");
     }
 
     public static String format(String fmt) {
@@ -58,10 +58,10 @@ public class LastDeathLocation extends CustomTextHUD {
         var deathLocation = mc.player.getLastDeathPos();
         if (!deathLocation.isPresent())
             return "None";
-        var pos = deathLocation.get().getPos();
+        var pos = deathLocation.get().pos();
         try {
             return String.format(fmt, 
-                    deathLocation.get().getDimension().getValue().toString().replaceFirst("^minecraft:", ""),
+                    deathLocation.get().dimension().getValue().toString().replaceFirst("^minecraft:", ""),
                     pos.getX(), pos.getY(), pos.getZ()
             );
         }

@@ -10,7 +10,6 @@ import meteordevelopment.meteorclient.settings.SettingGroup;
 import meteordevelopment.meteorclient.settings.StringSetting;
 import meteordevelopment.meteorclient.systems.hud.HudElementInfo;
 import meteordevelopment.meteorclient.utils.player.PlayerUtils;
-import meteordevelopment.meteorclient.utils.world.Dimension;
 // import meteordevelopment.starscript;
 import xenapte.customhud.Addon;
 
@@ -37,7 +36,7 @@ public class CoordinateFormatter extends CustomTextHUD {
     }
     
     public static String format(String fmt, boolean oppositeDimension) {
-        if (mc.player == null || PlayerUtils.getDimension() == Dimension.End)
+        if (mc.player == null)
             return "";
         double x = mc.player.getX(), y = mc.player.getY(), z = mc.player.getZ();
         if (oppositeDimension) {
