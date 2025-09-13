@@ -5,8 +5,8 @@ import java.util.IllegalFormatException;
 
 import static meteordevelopment.meteorclient.utils.misc.MeteorStarscript.ss;
 
-import meteordevelopment.starscript.value.Value;
-import meteordevelopment.starscript.value.ValueMap;
+import org.meteordev.starscript.value.Value;
+import org.meteordev.starscript.value.ValueMap;
 import xenapte.customhud.hud.CoordinateFormatter;
 import xenapte.customhud.hud.LastDeathLocation;
 import xenapte.customhud.hud.TimeFormatter;
