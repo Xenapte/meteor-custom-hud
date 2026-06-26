@@ -16,11 +16,11 @@ public class WeatherDisplay extends CustomTextHUD {
     }
 
     public static String getWeather() {
-        if (mc.world == null)
+        if (mc.level == null)
             return "";
-        if (mc.world.isThundering())
+        if (mc.level.isThundering())
             return "Thunderstorm";
-        else if (mc.world.isRaining())
+        else if (mc.level.isRaining())
             return "Raining";
         return "Clear";
     }
